@@ -7,7 +7,6 @@ categories: [Paper Review, Knowledge Distillation]
 tags: [KD, Fundamental KD]
 use_math: true
 pin: false
-lang: ko
 ---
 
 
