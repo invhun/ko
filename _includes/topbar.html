@@ -1,0 +1,122 @@
+<!-- The Top Bar -->
+
+<header id="topbar-wrapper" aria-label="Top Bar">
+    <div id="topbar" class="d-flex align-items-center justify-content-between px-lg-3 h-100">
+        <nav id="breadcrumb" aria-label="Breadcrumb">
+            {% assign paths = page.url | split: '/' %}
+  
+            {% if paths.size == 0 or page.layout == 'home' %}
+                <span>{{ site.data.locales[include.lang].tabs.home | capitalize }}</span>
+            {% else %}
+                {% for item in paths %}
+                    {% if forloop.first %}
+                        <span>
+                            <a href="{{ '/' | relative_url }}">
+                                {{- site.data.locales[include.lang].tabs.home | capitalize -}}
+                            </a>
+                        </span>
+                    {% elsif forloop.last %}
+                        {% if page.collection == 'tabs' %}
+                            <span>{{ site.data.locales[include.lang].tabs[item] | default: page.title }}</span>
+                        {% else %}
+                            <span>{{ page.title }}</span>
+                        {% endif %}
+                    {% elsif page.layout == 'category' or page.layout == 'tag' %}
+                        <span>
+                            <a href="{{ item | append: '/' | relative_url }}">
+                                {{- site.data.locales[include.lang].tabs[item] | default: page.title -}}
+                            </a>
+                        </span>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </nav>
+        <!-- endof #breadcrumb -->
+
+        <button type="button" id="sidebar-trigger" class="btn btn-link">
+            <i class="fas fa-bars fa-fw"></i>
+        </button>
+  
+        <div id="topbar-title">
+            {% if page.layout == 'home' %}
+                {{- site.data.locales[include.lang].title | default: site.title -}}
+            {% elsif page.collection == 'tabs' or page.layout == 'page' %}
+                {%- capture tab_key -%}{{ page.url | split: '/' }}{%- endcapture -%}
+                {{- site.data.locales[include.lang].tabs[tab_key] | default: page.title -}}
+            {% else %}
+                {{- site.data.locales[include.lang].layout[page.layout] | default: page.layout | capitalize -}}
+            {% endif %}
+        </div>
+
+        <ul class="visible-links" style="list-style: none; padding: 0; margin: 0;">
+            <li style="display: inline;"> <!-- inline으로 설정하여 리스트처럼 보이지 않게 함 -->
+                <a href="#" id="changeLanguageButton" class="toggle-button">
+                    <span class="language-text">EN</span>
+                </a>
+            </li>
+        </ul>
+  
+        <button type="button" id="search-trigger" class="btn btn-link">
+            <i class="fas fa-search fa-fw"></i>
+        </button>
+
+        <search id="search" class="align-items-center ms-3 ms-lg-0">
+            <i class="fas fa-search fa-fw"></i>
+            <input
+                class="form-control"
+                id="search-input"
+                type="search"
+                aria-label="search"
+                autocomplete="off"
+                placeholder="{{ site.data.locales[include.lang].search.hint | capitalize }}..."
+            >
+        </search>
+        <button type="button" class="btn btn-link text-decoration-none" id="search-cancel">
+            {{- site.data.locales[include.lang].search.cancel -}}
+        </button>
+
+        <script>
+            document.getElementById('changeLanguageButton').onclick = function() {
+                var currentUrl = window.location.href;
+                var newUrl = currentUrl.replace('/ko/', '/en/');
+                window.location.href = newUrl;
+            };
+        </script>
+        
+        <style>
+            .toggle-button {
+                background: transparent;
+                border: none;
+                cursor: pointer;
+                padding: 10px;
+                display: flex; /* 아이콘과 텍스트를 수평으로 정렬 */
+                align-items: center; /* 세로 가운데 정렬 */
+                color: #333; /* 기본 텍스트 색상 */
+                margin-right: 10px; /* 오른쪽 여백 추가 */
+            }
+      
+            .language-text {
+                font-size: 1.5rem; /* 폰트 크기 조정 (더 크게) */
+                font-weight: bold; /* 폰트 두께 */
+                margin-right: 5px; /* 아이콘과 간격 조정 */
+                color: #007bff; /* 텍스트 색상 (파란색) */
+                transition: color 0.3s; /* 색상 변화 애니메이션 */
+            }
+      
+            .toggle-button:hover .language-text {
+                color: #0056b3; /* 호버 시 텍스트 색상 변경 */
+            }
+      
+            .toggle-button i {
+                font-size: 1.5rem; /* 아이콘 크기 조정 */
+            }
+      
+            .toggle-button:hover {
+                background-color: rgba(0, 0, 0, 0.1); /* 호버 시 배경색 */
+                border-radius: 5px; /* 둥근 모서리 */
+            }
+        </style>
+
+    </div>
+</header>
+
