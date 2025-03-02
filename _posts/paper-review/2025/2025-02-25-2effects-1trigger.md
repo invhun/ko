@@ -2,7 +2,7 @@
 title: "[논문 리뷰] Two Effects, One Trigger: On the Modality Gap, Object Bias, and Information Imbalance in Contrastive Vision-Language Models"
 author: invhun
 date: 2025-02-25 15:00:00 +0900
-modified: 2025-02-25 15:00:00 +0900
+modified: true
 categories: [Paper Review, Multimodal Learning]
 tags: [Contrastive Learning, Multimodal Learning, Modality Gap, Object Bias, CLIP]
 math: true
