@@ -2,7 +2,6 @@
 title: "[논문 리뷰] Decoupled Knowledge Distillation"
 author: invhun
 date: 2025-01-17 01:30:00 +0900
-last_modified_at: 2025-01-18 16:09:00 +0900
 categories: [Paper Review, Knowledge Distillation]
 tags: [KD, Fundamental KD]
 math: true

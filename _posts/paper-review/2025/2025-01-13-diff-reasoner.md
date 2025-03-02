@@ -2,7 +2,6 @@
 title: "[논문 리뷰] Are Diffusion Models Vision-And-Language Reasoners?"
 author: invhun
 date: 2025-01-13 15:00:00 +0900
-last_modified_at: 2025-01-18 18:29:00 +0900
 categories: [Paper Review, Multimodal Learning]
 tags: [Diffusion-based, Multimodal Learning, Representation Learning, Text-Image, Retrieval, Text-Image Retrieval]
 math: true

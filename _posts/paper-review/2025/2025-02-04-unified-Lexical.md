@@ -2,7 +2,6 @@
 title: "[논문 리뷰] Unified Lexical Representation for Interpretable Visual-Language Alignment"
 author: invhun
 date: 2025-02-04 14:00:00 +0900
-last_modified_at: 2025-02-04 14:00:00 +0900
 categories: [Paper Review, Multimodal Learning]
 tags: [Text-Image, Text-Image Retrieval, Multimodal Learning, DINOv2, Overcoming CLIP Limitations, Zero-shot Retrieval, Lexical Representation, Representation Learning]
 math: true
