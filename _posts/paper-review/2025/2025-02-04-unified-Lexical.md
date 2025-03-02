@@ -5,7 +5,7 @@ date: 2025-02-04 14:00:00 +0900
 last_modified_at: 2025-02-04 14:00:00 +0900
 categories: [Paper Review, Multimodal Learning]
 tags: [Text-Image, Text-Image Retrieval, Multimodal Learning, DINOv2, Overcoming CLIP Limitations, Zero-shot Retrieval, Lexical Representation, Representation Learning]
-use_math: true
+math: true
 pin: false
 ---
 
@@ -45,7 +45,7 @@ pin: false
 # LexVLA
 ![fig2.PNG](https://1drv.ms/i/c/af5642aec05791fb/IQRVL2aLLQqjQbZzBEkFCJkNAdd0nRRu2BeXTmJrHFS1y2g?width=1024)
 ### problem setup
-- 일반적으로 어휘 표현 $s_i \in \mathbb{R}^V, i \in \lbrace img, txt \rbrace$ 는 점수벡터로, 각 요소는 샘플과 어휘 $V$의 해당 단어 간의 유사성을 나타냄.
+- 일반적으로 어휘 표현 $$s_i \in \mathbb{R}^V, i \in \lbrace img, txt \rbrace$$ 는 점수벡터로, 각 요소는 샘플과 어휘 $$V$$의 해당 단어 간의 유사성을 나타냄.
 - 대조 어휘 정렬은 각 모달리티에 대해 어휘 인코더를 학습하고, 긍정 이미지-텍스트 쌍의 유사성을 최대화, 부정 쌍의 유사성을 최소화하는 것이 목표
 
 ## 3.1. Lexical representation
@@ -54,11 +54,11 @@ pin: false
 
 ### Codebooks
 - one-hot 임베딩으로 구성하지 않고, 4096차원의 벡터를 구성
-- 동일한 어휘를 사용하되, 모달리티 별 고유한 코드북을 구성. 이때 텍스크 코드북 $Z_{txt}$는 frozen하고, 이미지 코드북 $Z_{img}$는 $Z_{txt}$로 초기화 후 fine-tuning함
+- 동일한 어휘를 사용하되, 모달리티 별 고유한 코드북을 구성. 이때 텍스크 코드북 $$Z_{txt}$$는 frozen하고, 이미지 코드북 $$Z_{img}$$는 $$Z_{txt}$$로 초기화 후 fine-tuning함
 
 ### Sparse representation
 - dense output vector -> sparse lexical representation으로 변환은 자연스럽게 가능함
-- 저자는 여러 방법 중, 임계값($1/\sqrt{V}$) 이상의 값을 가진 항목만 유지하는 방식을 선택
+- 저자는 여러 방법 중, 임계값($$1/\sqrt{V}$$) 이상의 값을 가진 항목만 유지하는 방식을 선택
 
 ## 3.2. Lexical encoder
 

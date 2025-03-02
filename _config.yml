@@ -16,7 +16,7 @@ timezone: Asia/Seoul
 
 title: invhun # the main title
 
-tagline: AI 연구 대학원생 # it will display as the subtitle
+tagline: AI 석사과정생 # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   A collection of papers, code, and reviews focused on AI, computer vision, and multimodal learning.
@@ -98,7 +98,7 @@ theme_mode: # [light | dark]
 cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: assets/profile/profile_96_96.jpg
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.

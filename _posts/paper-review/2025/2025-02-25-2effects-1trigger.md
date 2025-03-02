@@ -5,7 +5,7 @@ date: 2025-02-25 15:00:00 +0900
 last_modified_at: 2025-02-25 15:00:00 +0900
 categories: [Paper Review, Multimodal Learning]
 tags: [Contrastive Learning, Multimodal Learning, Modality Gap, Object Bias, CLIP]
-use_math: true
+math: true
 pin: false
 ---
 
@@ -69,7 +69,7 @@ pin: false
 
 - "더 작은 모달리티 갭이 더 나은 성능으로 이어지는가?"에 대한 질문에 답하기 위해, CLIP 및 SigLIP을 비롯한 98개의 VLM에 대한 다운스트림 성능과 모달리티 갭을 평가하였음
 
-- $L2M := || \frac{1}{N} \sum_{i=1}^{N} x_i - \frac{1}{N} \sum_{i=1}^{N} y_i ||$
+- $$L2M := || \frac{1}{N} \sum_{i=1}^{N} x_i - \frac{1}{N} \sum_{i=1}^{N} y_i ||$$
 - 기존 모달리티 갭 측정 지표인 L2M은 단순 평균 간 L2거리로, 이미지-텍스트 쌍의 매치를 고려하지 않으며, "does not take the effectively used space in to account", 즉 임베딩 공간에서 실제로 의미있는 정보를 나타내는 영역을 고려하지 않음.
 - 이러한 한계로 해결하기 위해 Relatve Modality Gap (RMG)를 제안함
     ![fo1](https://1drv.ms/i/c/af5642aec05791fb/IQSPO5yanWC_QJNEaZG5dWFYAYZdeOxp-35fmXPHjmC6wio?width=858&height=147)
@@ -122,7 +122,7 @@ pin: false
 - 그림 6(a)는 LAION-2B의 캡션에 실제로 attribute과 객체보다 더 자주 언급되는것을 보여주며, 객체에 대한 편향이 학습데이터셋의 단어 빈도에서 기인하지는 않음을 확인할 수 있음.
 - 저자는 객체에 대한 편향이 자연어에서 객체의 샘플별 "prevalence"에 있음을 가정함.
     즉, 사람들은 가장 눈에 띄는 객체와 그의 몇가지 속성만을 언급하는 경향이 있음
-    따라서 이미지가 주어졌을 때, 단어의 조건부 확률이 $p(word|image)$ 편향을 유발한다고 가정함.
+    따라서 이미지가 주어졌을 때, 단어의 조건부 확률이 $$p(word|image)$$ 편향을 유발한다고 가정함.
 - 이를 검증하기 위해 MAD를 사용하여, 주요 요소가 항상 캡션에 포함되도록 하고 다른 요소 중 하나를 무작위로 샘플링하여 더섯개의 VLM을 학습시킴
 - 그림 6(b)는 각 모델이 학습 중에 "prevalence"가 있었던 요소에 대한 편향이 있음을 보여줌.
 - 또한 이미지 인코더는 가장 가능성이 높은 캡션과 맞춰야하기 떄문에, 이미지 인코더에서 편향이 더 크게 나타나는 것을 확인할 수 있음

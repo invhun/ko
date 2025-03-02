@@ -5,7 +5,7 @@ date: 2025-01-13 15:00:00 +0900
 last_modified_at: 2025-01-18 18:29:00 +0900
 categories: [Paper Review, Multimodal Learning]
 tags: [Diffusion-based, Multimodal Learning, Representation Learning, Text-Image, Retrieval, Text-Image Retrieval]
-use_math: true
+math: true
 pin: false
 ---
 
@@ -91,7 +91,7 @@ Diffusion 기반 Text-conditioned 이미지 생성형 모델은 Discriminative�
 ![fo6-7.PNG](https://1drv.ms/i/s!AvuRV8CuQlavgQ1D6-_7p_EZPWCD?embed=1&width=700&height=158)
 - MS-COCO를 사용하여, 하드 네거티브에 대해 loss를 계산하여 fine-tuning함
 - U-Net cross-attention에 LORA 레이어를 추가하고, 이를 fine-tuning하는 방식을 사용
-- 모델이 positive prompt의 noise 예측 목표에서 너무 벗어나지 않도록 $L_{neg}$를 $[-L_{pos}, {L_{pos}}]$범위로 제한
+- 모델이 positive prompt의 noise 예측 목표에서 너무 벗어나지 않도록 $$L_{neg}$$를 $$[-L_{pos}, {L_{pos}}]$$범위로 제한
 - 이 Diffusion 기반 방식은 image과 text를 동시에 인코딩 하기 때문에 각각 인코딩 하는 방식인 CLIP과는 달리, 많은 negative sample을 batch에 포함할 수 없음   
 -> MS-COCO로 fine-tuning 후 zero-shot방식으로 평가
 
@@ -99,7 +99,7 @@ Diffusion 기반 Text-conditioned 이미지 생성형 모델은 Discriminative�
 
 - 목적: GDBench는 Diffusion 기반 생성 모델의 비전-언어 추론 작업에 대한 downstream task 성능을 측정하기 위한 벤치마크로 NLP의 GLUE 벤치마크와 유사한 방식으로 모델의 성능을 평가
 - 구성: GDBench는 8개의 다양한 이미지-텍스트 매칭(ITM) 작업으로 구성되어 있으며, 7개는 ability 중심, 1개는 bias 데이터셋
-- 장점: 명확하며, 다양성을 제공, 비전-언어 데이터셋에 대한 해석 가능한 평가를 제공함또한 VQA와 같은 별도의 모델 없이 평가를 수행
+- 장점: 명확하며, 다양성을 제공, 비전-언어 데이터셋에 대한 해석 가능한 평가를 제공함, 또한 VQA와 같은 별도의 모델 없이 평가를 수행
 - 포함된 데이터셋:
     - Flickr30K: 다양한 장면의 이미지 및 텍스트 검색 데이터셋
     - Winoground: 조합 가능성을 평가하는 진단 벤치마크
@@ -114,7 +114,7 @@ Diffusion 기반 Text-conditioned 이미지 생성형 모델은 Discriminative�
 ### Measuring Bias
 ![fo8.PNG](https://1drv.ms/i/s!AvuRV8CuQlavgRC4Yw5Zbn2IZeT0?embed=1&width=700&height=212)
 - 세 가지 사회적 편향: Religious, Nationality, sexual orientation을 조사, 특정 집단과 속성 간의 연관성을 측정하여 평가함
-- $\sigma$ 점수는 DiffusionITM의 점수 또는 CLIP의 경우 코사인 유사도
+- $$\sigma$$ 점수는 DiffusionITM의 점수 또는 CLIP의 경우 코사인 유사도
 - 각 이미지에 대해 속성 A의 평균 점수에서 속성 B의 평균 점수를 뺌
 - X집단에 대한 평균 점수와, Y집단에 대한 평균 점수를 각각 계산
 - X와 Y의 모든 이미지에 대한 점수의 표준 편차를 계산

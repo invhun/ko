@@ -5,7 +5,7 @@ date: 2025-01-17 01:30:00 +0900
 last_modified_at: 2025-01-18 16:09:00 +0900
 categories: [Paper Review, Knowledge Distillation]
 tags: [KD, Fundamental KD]
-use_math: true
+math: true
 pin: false
 ---
 
@@ -83,24 +83,24 @@ CIFAR-100, ImageNet, MS-COCO에서 우수한 결과를 보임
 
 ## 3.1. Reformulating KD
 
-- t번째 Class에 속하는 샘플에 대해서, C개의 클래스가 있을 때, 각 $p_i$는 softmax함수로 계산된 i번째 클래스로 분류될 확률을 뜻함
+- t번째 Class에 속하는 샘플에 대해서, C개의 클래스가 있을 때, 각 $$p_i$$는 softmax함수로 계산된 i번째 클래스로 분류될 확률을 뜻함
 
 ![image.png](https://1drv.ms/i/s!AvuRV8CuQlavgQQjGZNXvsLtZvHR?embed=1&width=459&height=92)
 
-- 정답 레이블인 target class와 관련성으로 분리하면, 아래와 같이 분리됨. 이때 $\boldsymbol{b} = [p_t, p_{\backslash t}]$, $p_t$는 타겟 클래스의 확률, $p_{\backslash t}$는 타겟 클래스를 제외한 확률의 합으로 softmax 특성 상 $p_{\backslash t}=1-p_t$가 성립됨
+- 정답 레이블인 target class와 관련성으로 분리하면, 아래와 같이 분리됨. 이때 $$\boldsymbol{b} = [p_t, p_{\backslash t}]$$, $$p_t$$는 타겟 클래스의 확률, $$p_{\backslash t}$$는 타겟 클래스를 제외한 확률의 합으로 softmax 특성 상 $$p_{\backslash t}=1-p_t$$가 성립됨
     
     ![fo1-1.PNG](https://1drv.ms/i/s!AvuRV8CuQlavfr2Uyzy6VP6YXiw?embed=1&width=545&height=109)
     
 
-- 또한 타겟 클래스를 제외하였을 때, i번째 클래스의 확률 $\hat{p_i}$는 아래와 같이 구함
+- 또한 타겟 클래스를 제외하였을 때, i번째 클래스의 확률 $$\hat{p_i}$$는 아래와 같이 구함
     
     ![fo2.PNG](https://1drv.ms/i/s!AvuRV8CuQlavcgYQaPDLugzt1Q4?embed=1&width=468&height=91)
     
-- 기존 KD의 경우 (3)번식으로 표현하며, 이를 $\mathcal{T}, \mathcal{S}$는 각각 Teacher와 Student를 의미함. KL divergence에서 타겟 클래스를 분리하여 아래와 같이 표현할 수 있음
+- 기존 KD의 경우 (3)번식으로 표현하며, 이를 $$\mathcal{T}, \mathcal{S}$$는 각각 Teacher와 Student를 의미함. KL divergence에서 타겟 클래스를 분리하여 아래와 같이 표현할 수 있음
     
     ![fo3.PNG](https://1drv.ms/i/s!AvuRV8CuQlavb2w4OzltYSJtqes?embed=1&width=561&height=159)
     
-- 이때 (1)과 (2)의 식을 참고하면, $\hat{p_i}=p_i/p_{\backslash t}$임을 알 수 있음. 따라서 식 (3)의 $p_i$를 $\hat{p_i}$와 $p_{\backslash t}$의 곱으로 다시 표현하고, 정리하면 타겟 클래스에 대한 이진 확률에 관한 KL divergence식과 논 타겟 클래스 간 확률에 KL divergence 식으로 분리할 수 있음
+- 이때 (1)과 (2)의 식을 참고하면, $$\hat{p_i}=p_i/p_{\backslash t}$$임을 알 수 있음. 따라서 식 (3)의 $$p_i$$를 $$\hat{p_i}$$와 $$p_{\backslash t}$$의 곱으로 다시 표현하고, 정리하면 타겟 클래스에 대한 이진 확률에 관한 KL divergence식과 논 타겟 클래스 간 확률에 KL divergence 식으로 분리할 수 있음
     
     ![fo4.PNG](https://1drv.ms/i/s!AvuRV8CuQlaveIF-KOxUVsufT2g?embed=1&width=641&height=248)
     
@@ -137,13 +137,13 @@ CIFAR-100, ImageNet, MS-COCO에서 우수한 결과를 보임
 ![fo6.PNG](https://1drv.ms/i/s!AvuRV8CuQlavfKmqQnXxQHvwN1s?embed=1&width=509&height=53)
 
 - 식(6)을 통해 NCKD가 교사의 타겟 클래스에 대한 신뢰도(확률)이 높아질수록, 가치있는 “Dark knowledge”의 distill이 억압됨을 확인할 수 있음
-- (표5)는 $p^T_t$를 기준으로 상위 50%, 하위 50%에 대해 각각 NCKD를 적용한 결과로, 상위 50% 샘플에 NCKD를 적용하였 을 때 더 높은 성능을 보임을 확인할 수 있음
+- (표5)는 $$p^T_t$$를 기준으로 상위 50%, 하위 50%에 대해 각각 NCKD를 적용한 결과로, 상위 50% 샘플에 NCKD를 적용하였 을 때 더 높은 성능을 보임을 확인할 수 있음
 → 잘 예측된 샘플의 지식이 다른 샘플보다 풍부함을 시사하지만, 이러한 지식이 교사의 높은 신뢰도에 의해 억제됨
 
 ## 3.3. Decoupled Knowledge Distillation
 
 - 직관적으로 TCKD와 NCKD는 모두 필수적이고 중요하지만, 기존 KD 공식에서는 TCKD와 NCKD가 결합되어 있음
-(1) NCKD는 $1-p^T_t$와 결합되어, 잘 예측된 샘플에서 효과가 억제됨
+(1) NCKD는 $$1-p^T_t$$와 결합되어, 잘 예측된 샘플에서 효과가 억제됨
 (2) NCKD와 TCKD 각각의 가중치를 균형있게 조정할 수 없음. 두 항목의 기여가 서로 다른 측면에서 나오므로 별도로 고려해야함
 - 각각의 가중치를 별도로 조정하는 방식 Decoupled Knowledge Distillation(DKD)를 제안함
     
@@ -158,7 +158,7 @@ CIFAR-100, ImageNet, MS-COCO에서 우수한 결과를 보임
 
 ## 4.1. Main Results
 
-### Ablation: $\alpha$ and $\beta$
+### Ablation: $$\alpha$$ and $$\beta$$
 
 ![Screenshot 2025-01-16 at 11.48.07 PM.png](https://1drv.ms/i/s!AvuRV8CuQlavgQB7bzeXxsnE_7P-?embed=1&width=1112&height=262)
 
