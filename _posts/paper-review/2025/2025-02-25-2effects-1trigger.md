@@ -8,8 +8,8 @@ math: true
 pin: false
 ---
 
-> Expertized Caption Auto-Enhancement for Video-Text Retrieval   
-> arxiv, 5 Feb 2025   
+> Two Effects, One Trigger: On the Modality Gap, Object Bias, and Information Imbalance in Contrastive Vision-Language Models   
+> ICLR 2025 oral
 > **Simon Schrodi**, **David T. Hoffmann**, Max Argus, Volker Fischer, Thomas Brox   
 > University of Freiburg, Bosch Center for Artificial Intelligence   
 > [[paper](https://openreview.net/pdf?id=uAFHCZRmXk)] [[github](https://github.com/lmb-freiburg/two-effects-one-trigger)]
