@@ -16,7 +16,7 @@ timezone: Asia/Seoul
 
 title: invhun # the main title
 
-tagline: AI 석사과정생 # it will display as the subtitle
+tagline: M.S. in Computer Science | Multimodal AI Researcher # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   A collection of papers, code, and reviews focused on AI, computer vision, and multimodal learning.
